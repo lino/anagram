@@ -45,7 +45,7 @@ public class Main {
                 continue;
             }
 
-            boolean result = service.areAnagrams(firstString, secondString);
+            boolean result = service.historizedAnagrams(firstString, secondString);
 
             if (result) {
                 System.out.println("The strings are anagrams!");

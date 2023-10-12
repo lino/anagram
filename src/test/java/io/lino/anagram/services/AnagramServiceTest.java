@@ -64,26 +64,26 @@ class AnagramServiceTest {
     @Test
     void isHistoryFilterWorkingWithNoResults() {
         AnagramService anagramService = new AnagramService();
-        anagramService.areAnagrams("a", "b");
-        anagramService.areAnagrams("c", "d");
+        anagramService.historizedAnagrams("a", "b");
+        anagramService.historizedAnagrams("c", "d");
         assertEquals(0, anagramService.getAnagramsFromHistory("e").size());
     }
 
     @Test
     void isHistoryFilterWorkingWithResults() {
         AnagramService anagramService = new AnagramService();
-        anagramService.areAnagrams("listen", "enlist");
-        anagramService.areAnagrams("silent", "tinsel");
-        anagramService.areAnagrams("sardine", "mackerel");
+        anagramService.historizedAnagrams("listen", "enlist");
+        anagramService.historizedAnagrams("silent", "tinsel");
+        anagramService.historizedAnagrams("sardine", "mackerel");
         assertEquals(3, anagramService.getAnagramsFromHistory("listen").size());
     }
 
     @Test
     void isHistoryFilterWorkingForEmptyResultset() {
         AnagramService anagramService = new AnagramService();
-        anagramService.areAnagrams("listen", "enlist");
-        anagramService.areAnagrams("silent", "tinsel");
-        anagramService.areAnagrams("sardine", "mackerel");
+        anagramService.historizedAnagrams("listen", "enlist");
+        anagramService.historizedAnagrams("silent", "tinsel");
+        anagramService.historizedAnagrams("sardine", "mackerel");
         assertEquals(0, anagramService.getAnagramsFromHistory("sardine").size());
     }
 }

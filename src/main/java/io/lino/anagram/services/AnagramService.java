@@ -16,10 +16,22 @@ public class AnagramService {
         inputHistory = new HashSet<>();
     }
 
-    public String anagramHash(String input) {
-        char[] charArray = input.toCharArray();
-        Arrays.sort(charArray);
-        return new String(charArray);
+    public void addToHistory(String input) {
+        String historyStr = input.replaceAll("\\s", "").toLowerCase();
+        inputHistory.add(historyStr);
+    }
+
+    /**
+     * Checks if strings are anagrams and adds terms to history.
+     *
+     * @param firstString
+     * @param secondString
+     * @return
+     */
+    public boolean historizedAnagrams(String firstString, String secondString) {
+        this.addToHistory(firstString);
+        this.addToHistory(secondString);
+        return this.areAnagrams(firstString, secondString);
     }
 
     /**
@@ -33,10 +45,6 @@ public class AnagramService {
         // Remove any whitespace and convert strings to lowercase
         String str1 = firstString.replaceAll("\\s", "").toLowerCase();
         String str2 = secondString.replaceAll("\\s", "").toLowerCase();
-
-        // Add the input to the history
-        inputHistory.add(firstString);
-        inputHistory.add(secondString);
 
         // Check if length is same, if not, it can logically be no anagram.
         if (str1.length() != str2.length()) {
